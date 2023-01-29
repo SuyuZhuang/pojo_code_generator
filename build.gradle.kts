@@ -1,12 +1,25 @@
 plugins {
     id("java")
-    id("org.jetbrains.intellij") version "1.5.2"
+    id("org.jetbrains.intellij") version "1.8.0"
 }
 
 group = "com.asu.plugins"
 version = "1.0-SNAPSHOT"
 
 repositories {
+    mavenLocal()
+    maven {
+        isAllowInsecureProtocol = true
+        setUrl("http://maven.aliyun.com/nexus/content/groups/public/")
+    }
+    maven {
+        isAllowInsecureProtocol = true
+        url = uri("https://maven.aliyun.com/repository/public")
+    }
+    maven {
+        isAllowInsecureProtocol = true
+        url = uri("https://maven.aliyun.com/repository/google")
+    }
     mavenCentral()
 }
 
@@ -15,7 +28,7 @@ intellij {
     version.set("2021.2")
     type.set("IC") // Target IDE Platform
 
-    plugins.set(listOf(/* Plugin Dependencies */))
+    plugins.set(listOf("com.intellij.java"))
 }
 
 tasks {
@@ -27,7 +40,6 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("212")
-        untilBuild.set("222.*")
     }
 
     signPlugin {
