@@ -1,0 +1,1 @@
+rootProject.name = "pojo_code_generator"
