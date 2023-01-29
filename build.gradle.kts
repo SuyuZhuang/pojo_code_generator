@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("org.jetbrains.intellij") version "1.8.0"
+    id("org.jetbrains.intellij") version "1.5.2"
 }
 
 group = "com.asu.plugins"
@@ -20,6 +20,22 @@ repositories {
         isAllowInsecureProtocol = true
         url = uri("https://maven.aliyun.com/repository/google")
     }
+    maven {
+        isAllowInsecureProtocol = true
+        url = uri("https://maven.aliyun.com/repository/gradle-plugin")
+    }
+    maven {
+        isAllowInsecureProtocol = true
+        url = uri("https://maven.aliyun.com/repository/spring-plugin")
+    }
+    maven {
+        isAllowInsecureProtocol = true
+        url = uri("https://maven.aliyun.com/repository/apache-snapshots")
+    }
+    maven {
+        isAllowInsecureProtocol = true
+        url = uri("http://oss.jfrog.org/artifactory/oss-snapshot-local/")
+    }
     mavenCentral()
 }
 
@@ -32,6 +48,14 @@ intellij {
 }
 
 tasks {
+    runIde {
+        systemProperties["idea.auto.reload.plugins"] = false
+        jvmArgs = listOf(
+            "-Xms512m",
+            "-Xmx2048m",
+        )
+    }
+
     // Set the JVM compatibility versions
     withType<JavaCompile> {
         sourceCompatibility = "11"

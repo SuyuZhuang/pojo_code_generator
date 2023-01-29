@@ -28,4 +28,9 @@
     <extensions defaultExtensionNs="com.intellij">
 
     </extensions>
+    <actions>
+        <action id="com.asu.plugins.pojo" class="com.asu.plugins.pojo_code_generator.PopupDemo" text="PopupDemo">
+            <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="AgpUpgrade"/>
+        </action>
+    </actions>
 </idea-plugin>
