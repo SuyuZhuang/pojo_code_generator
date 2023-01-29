@@ -29,8 +29,8 @@
 
     </extensions>
     <actions>
-        <action id="com.asu.plugins.pojo" class="com.asu.plugins.pojo_code_generator.PopupDemo" text="PopupDemo">
-            <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="AgpUpgrade"/>
+        <action id="com.asu.plugins.pojo" class="com.asu.plugins.pojo_code_generator.PojoFromDml" text="POJO From DML">
+            <add-to-group group-id="NewGroup" anchor="after" relative-to-action="Gant.NewScript"/>
         </action>
     </actions>
 </idea-plugin>
