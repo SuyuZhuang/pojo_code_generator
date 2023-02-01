@@ -47,6 +47,10 @@ intellij {
     plugins.set(listOf("com.intellij.java"))
 }
 
+dependencies {
+    implementation("com.alibaba:druid:1.2.15")
+}
+
 tasks {
     runIde {
         systemProperties["idea.auto.reload.plugins"] = false
