@@ -17,6 +17,11 @@ public class ParsedJavaClass {
      */
     private List<ParsedColumn> parsedColumnList;
 
+    /**
+     * 主键
+     */
+    private ParsedColumn primaryKey;
+
     public String getTableName() {
         return tableName;
     }
@@ -31,5 +36,13 @@ public class ParsedJavaClass {
 
     public void setParsedColumnList(List<ParsedColumn> parsedColumnList) {
         this.parsedColumnList = parsedColumnList;
+    }
+
+    public ParsedColumn getPrimaryKey() {
+        return primaryKey;
+    }
+
+    public void setPrimaryKey(ParsedColumn primaryKey) {
+        this.primaryKey = primaryKey;
     }
 }

@@ -32,6 +32,7 @@ public final class DruidSqlParserUtil {
 
         List<SQLTableElement> tableElementList = ((MySqlCreateTableStatement) statement).getTableElementList();
 
+        ParsedJavaClass parsedJavaClass = new ParsedJavaClass();
         List<ParsedColumn> parsedColumnList = new ArrayList<>();
         List<TableStat.Column> columns = new ArrayList<>(visitor.getColumns());
         for (int i = 0; i < columns.size(); i++) {
@@ -48,11 +49,12 @@ public final class DruidSqlParserUtil {
             parsedColumn.setPrimary(false);
             if (column.isPrimaryKey()) {
                 parsedColumn.setPrimary(true);
+                parsedJavaClass.setPrimaryKey(parsedColumn);
             }
             parsedColumnList.add(parsedColumn);
         }
 
-        ParsedJavaClass parsedJavaClass = new ParsedJavaClass();
+
         String tableName = ((MySqlCreateTableStatement) statement).getTableName();
         tableName = StringUtils.uncapitalize(tableName);
         parsedJavaClass.setTableName(tableName);

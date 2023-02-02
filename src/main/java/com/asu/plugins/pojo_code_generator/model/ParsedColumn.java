@@ -26,7 +26,7 @@ public class ParsedColumn {
     private Boolean isPrimary;
 
 
-    public Boolean getPrimary() {
+    public Boolean isPrimary() {
         return isPrimary;
     }
 

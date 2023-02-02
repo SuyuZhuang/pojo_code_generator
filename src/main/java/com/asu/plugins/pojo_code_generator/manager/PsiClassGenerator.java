@@ -23,7 +23,7 @@ public interface PsiClassGenerator {
         if ("Simple POJO".equals(pojoType)) {
             return ApplicationManager.getApplication().getService(SimplePojoClassGenerator.class);
         } else {
-            return ApplicationManager.getApplication().getService(SimplePojoClassGenerator.class);
+            return ApplicationManager.getApplication().getService(MybatisPojoClassGenerator.class);
         }
     }
 }

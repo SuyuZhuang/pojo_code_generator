@@ -19,7 +19,7 @@ import javax.annotation.Nonnull;
 import java.util.Collections;
 import java.util.Objects;
 
-public abstract class AbstractPojoClassGenerator implements PsiClassGenerator{
+public abstract class AbstractPojoClassGenerator implements PsiClassGenerator {
 
     public void createJavaClassFromDml(ParsedJavaClass parsedJavaClass, Project myProject, PsiDirectory psiDirectory) {
         String className = parseClassName(parsedJavaClass.getTableName()) + "DO";
@@ -52,6 +52,17 @@ public abstract class AbstractPojoClassGenerator implements PsiClassGenerator{
         if (annotation == null) {
             annotation = Objects.requireNonNull(psiClass.getModifierList()).addAnnotation(LOMBOK_DATA_ANN);
         }
+        // 自动import
+        JavaCodeStyleManager.getInstance(project).shortenClassReferences(annotation);
+    }
+
+
+    protected void generateAccessorsAnnotation(@Nonnull PsiClass psiClass, @Nonnull Project project) {
+        PsiAnnotation annotation = psiClass.getAnnotation(LOMBOK_ACCESSORS_ANN);
+        if (annotation == null) {
+            annotation = Objects.requireNonNull(psiClass.getModifierList()).addAnnotation(LOMBOK_ACCESSORS_ANN);
+        }
+        annotation = (PsiAnnotation) annotation.replace(PsiElementFactory.getInstance(project).createAnnotationFromText("@lombok.experimental.Accessors(chain=true)", psiClass));
         // 自动import
         JavaCodeStyleManager.getInstance(project).shortenClassReferences(annotation);
     }
