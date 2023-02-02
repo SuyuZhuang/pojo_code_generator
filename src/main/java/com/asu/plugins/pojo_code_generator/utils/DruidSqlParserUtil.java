@@ -37,13 +37,13 @@ public final class DruidSqlParserUtil {
         for (int i = 0; i < columns.size(); i++) {
             ParsedColumn parsedColumn = new ParsedColumn();
             TableStat.Column column = columns.get(i);
-            parsedColumn.setName(parseName(column.getName(), '`'));
+            parsedColumn.setName(StrUtils.parseName(column.getName(), '`'));
             parsedColumn.setColumnType(column.getDataType());
             SQLTableElement sqlTableElement = tableElementList.get(i);
             SQLColumnDefinition sqlColumnDefinition = (SQLColumnDefinition) sqlTableElement;
             if (sqlColumnDefinition.getComment() != null) {
                 String comment = sqlColumnDefinition.getComment().toString();
-                parsedColumn.setComment(parseName(comment, '\''));
+                parsedColumn.setComment(StrUtils.parseName(comment, '\''));
             }
             parsedColumn.setPrimary(false);
             if (column.isPrimaryKey()) {
@@ -60,14 +60,6 @@ public final class DruidSqlParserUtil {
         return parsedJavaClass;
     }
 
-    /**
-     * 可能是`id`
-     */
-    private static String parseName(String name, char token) {
-        name = name.trim();
-        if (name.indexOf(token) <0) {
-            return name;
-        }
-        return name.substring(1, name.length() - 1);
-    }
+
+
 }

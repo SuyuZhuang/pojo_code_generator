@@ -17,6 +17,9 @@ public final class SimplePojoClassGenerator extends AbstractPojoClassGenerator{
         generateDataAnnotation(psiClass, myProject);
 
         // 添加字段
+        generateFields(parsedJavaClass, psiClass, myProject);
+
+        // 添加字段
         return psiClass;
     }
 }

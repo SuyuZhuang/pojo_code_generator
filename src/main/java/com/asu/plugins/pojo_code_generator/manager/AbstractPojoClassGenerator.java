@@ -56,6 +56,7 @@ public abstract class AbstractPojoClassGenerator implements PsiClassGenerator{
         JavaCodeStyleManager.getInstance(project).shortenClassReferences(annotation);
     }
 
+
     protected void generateFields(ParsedJavaClass parsedJavaClass, PsiClass psiClass, Project project) {
         if (parsedJavaClass == null || parsedJavaClass.getParsedColumnList() == null) {
             return;
@@ -68,19 +69,18 @@ public abstract class AbstractPojoClassGenerator implements PsiClassGenerator{
             PsiField psiField = factory.createField(parseFieldName(parsedColumn.getName()), psiType);
             // 注释
             if (StringUtils.isNotBlank(parsedColumn.getComment())) {
-                PsiComment comment = factory.createCommentFromText("/**\n" +
-                                "     * " + parsedColumn.getComment() + "\n" +
-                                "     * "
-                        , psiField);
+                String commentStr = "/**\n" +
+                        "     * " + parsedColumn.getComment() + "\n" +
+                        "     */";
+                PsiComment comment = factory.createCommentFromText(commentStr, psiField);
                 psiField.addBefore(comment, psiField.getFirstChild());
             }
 
             PsiGenerationInfo<PsiField> psi = new PsiGenerationInfo<>(psiField);
 
             // 指定位置插入
-            GenerateMembersUtil.insertMembersBeforeAnchor(psiClass, psiField.getLastChild(), Collections.singletonList(psi));
+            GenerateMembersUtil.insertMembersBeforeAnchor(psiClass, psiClass.getLastChild(), Collections.singletonList(psi));
             new ReformatCodeProcessor(psiClass.getContainingFile(), false).run();
-            new OptimizeImportsProcessor(project, psiClass.getContainingFile()).run();
         }
     }
 

@@ -4,8 +4,11 @@ import java.util.Objects;
 
 public enum SqlColumnTypeEnum {
     TINYINT("tinyint", "java.lang.Integer"),
+    INT("int", "java.lang.Integer"),
     BIGINT("bigint", "java.lang.Long"),
     DATETIME("datetime", "java.util.Date"),
+    DATE("date", "java.util.Date"),
+    CHAR("char", "java.lang.String"),
     VARCHAR("varchar", "java.lang.String"),
     JSON("json", "java.lang.String"),
     UNKNOWN("unknown", "unknown"),
