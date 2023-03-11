@@ -3,10 +3,13 @@
 根据create table建表语句生成pojo对象
 
 
-# usage
+# usage 使用方式
 
-例如下面的语句，在想要创建POJO对象文件的位置右键，选择
-**[NEW] | [Create POJO From DDL]** , 在弹框中粘贴建表语句，如下图
+
+在想要创建POJO对象文件的位置右键，选择
+**[NEW] | [Create POJO From DDL]** 
+
+
 
 ```
 create table emp(
@@ -22,6 +25,8 @@ create table emp(
 ```
 
 ![img1.png](imgs%2Fimg1.png)
+
+在弹框中粘贴建表语句，如下图，如果只是普通的POJO，在弹框的上方选择Simple POJO, 如果需要Mybatis-plus的DO文件，选择Mybatis-Plus POJO
 
 ![img2.png](imgs%2Fimg2.png)
 
