@@ -8,8 +8,10 @@ public enum SqlColumnTypeEnum {
     BIGINT("bigint", "java.lang.Long"),
     DATETIME("datetime", "java.util.Date"),
     DATE("date", "java.util.Date"),
+    TIMESTAMPS("timestamps", "java.util.Date"),
     CHAR("char", "java.lang.String"),
     VARCHAR("varchar", "java.lang.String"),
+    TEXT("text", "java.lang.String"),
     JSON("json", "java.lang.String"),
     UNKNOWN("unknown", "unknown"),
     ;

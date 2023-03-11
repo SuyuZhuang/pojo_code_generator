@@ -8,7 +8,12 @@ import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.NotNull;
 
-public class PojoFromDml extends AnAction {
+/**
+ * generate POJO from create table statement
+ *
+ * @author zhuangsuyu
+ */
+public class DdlPojoGeneratorAction extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {

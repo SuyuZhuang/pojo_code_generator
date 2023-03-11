@@ -30,8 +30,8 @@
 
     </extensions>
     <actions>
-        <action id="com.asu.plugins.pojo" class="com.asu.plugins.pojo_code_generator.PojoFromDml" text="POJO From DML">
-            <add-to-group group-id="NewGroup" anchor="after" relative-to-action="Gant.NewScript"/>
+        <action id="com.asu.plugins.pojo" class="com.asu.plugins.pojo_code_generator.DdlPojoGeneratorAction" text="Create POJO From DDL">
+            <add-to-group group-id="NewGroup" anchor="last"/>
         </action>
     </actions>
 </idea-plugin>
